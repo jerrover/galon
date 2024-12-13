@@ -323,41 +323,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-        // Mencegah pengguna menekan tombol back
-        (function (global) {
-            if (typeof (global) === "undefined") {
-                throw new Error("window is undefined");
+        // Mengatur header keamanan
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contoh pengaturan header keamanan
+            const headers = {
+                'X-Content-Type-Options': 'nosniff',
+                'X-Frame-Options': 'DENY',
+                'X-XSS-Protection': '1; mode=block',
+                'Content-Security-Policy': "default-src 'self';"
+            };
+            for (const [key, value] of Object.entries(headers)) {
+                document.head.appendChild(Object.assign(document.createElement('meta'), { name: key, content: value }));
             }
-
-            var _hash = "!";
-            var noBackPlease = function () {
-                global.location.href += "#";
-
-                // Menambahkan hash ke URL
-                global.setTimeout(function () {
-                    global.location.href += "!";
-                }, 50);
-            };
-
-            global.onhashchange = function () {
-                if (global.location.hash !== _hash) {
-                    global.location.hash = _hash;
-                }
-            };
-
-            global.onload = function () {
-                noBackPlease();
-
-                // Menonaktifkan tombol back
-                document.body.onkeydown = function (e) {
-                    var elm = e.target.nodeName.toLowerCase();
-                    if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
-                        e.preventDefault();
-                    }
-                    // Mencegah tombol backspace
-                    e.stopPropagation();
-                };
-            };
-        })(window);
+        });
     </script>
 @endsection 

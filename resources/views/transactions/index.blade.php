@@ -206,6 +206,8 @@
         </div>
     </div>
 </div>
+
+<!-- Link ke halaman pengeluaran -->
 <a href="{{ route('expenses.index') }}" class="btn btn-info btn-lg mt-3">
     <i class="fas fa-money-bill-wave"></i> Lihat Pengeluaran
 </a>
@@ -213,6 +215,7 @@
 
 @section('scripts')
 <script>
+    // Script untuk menampilkan data transaksi
 $(document).ready(function() {
     // Event handler untuk pencarian
     $('#search').on('keyup', function() {
@@ -241,13 +244,14 @@ $(document).ready(function() {
         
         window.location.href = currentUrl.toString();
     });
-    // Set nilai selected pada dropdown sesuai dengan yang aktif
+    // Script untuk menampilkan jumlah data per halaman
     $('#per-page').val("{{ $perPage }}");
 
     // Event handler untuk tombol Add
     $('#addTransactionForm').on('submit', function(e) {
         e.preventDefault();
         
+        // Script untuk menambahkan data transaksi
         $.ajax({
             url: "{{ route('transactions.store') }}",
             type: "POST",
@@ -272,6 +276,7 @@ $(document).ready(function() {
                     });
                 }
             },
+            //notifikasi kesalahan
             error: function(xhr) {
                 console.log(xhr.responseText);
                 alert('Terjadi kesalahan! ' + xhr.responseText);
@@ -373,42 +378,5 @@ $(document).ready(function() {
 
 });
 </script>
-<script>
-        // Mencegah pengguna menekan tombol back
-        (function (global) {
-            if (typeof (global) === "undefined") {
-                throw new Error("window is undefined");
-            }
 
-            var _hash = "!";
-            var noBackPlease = function () {
-                global.location.href += "#";
-
-                // Menambahkan hash ke URL
-                global.setTimeout(function () {
-                    global.location.href += "!";
-                }, 50);
-            };
-
-            global.onhashchange = function () {
-                if (global.location.hash !== _hash) {
-                    global.location.hash = _hash;
-                }
-            };
-
-            global.onload = function () {
-                noBackPlease();
-
-                // Menonaktifkan tombol back
-                document.body.onkeydown = function (e) {
-                    var elm = e.target.nodeName.toLowerCase();
-                    if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
-                        e.preventDefault();
-                    }
-                    // Mencegah tombol backspace
-                    e.stopPropagation();
-                };
-            };
-        })(window);
-    </script>
 @endsection

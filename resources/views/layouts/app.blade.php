@@ -12,6 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+
     <style>
         .navbar {
             background-color: #1a1a1a !important;
@@ -114,9 +115,9 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto">
+                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <form action="{{ route('admin.logout') }}" method="POST" class="d-inline">
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-inline">
                             @csrf
                             <button type="submit" class="btn btn-logout">
                                 <i class="fas fa-sign-out-alt"></i> Logout

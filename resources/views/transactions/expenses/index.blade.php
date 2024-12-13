@@ -171,5 +171,21 @@ $(document).ready(function() {
     });
 });
 </script>
+<?php
+session_start();
+
+// Cek sesi pengguna
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.blade.php");
+    exit();
+}
+
+// Mencegah cache halaman
+header("Expires: Thu, 19 Nov 1981 08:52:00 GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
+
 @endsection
 {{-- End of Selection --}}

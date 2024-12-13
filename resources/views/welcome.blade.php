@@ -21,6 +21,7 @@
         }
 
         .hero {
+            max-width: 100%;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -31,9 +32,9 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0;
             animation: fadeInUp 1.5s ease-out;
         }
 
@@ -243,7 +244,7 @@
 
         /* Standarisasi ukuran section */
         .section-padding {
-            padding: 60px 0;
+            padding: 0;
         }
         
         /* Standarisasi ukuran heading */
@@ -707,7 +708,7 @@
         <a href="https://wa.me/6285893930323?text=Halo,%20saya%20tertarik%20dengan%20layanan%20air%20galon%20Anda.%20Mohon%20informasi%20lebih%20lanjut%20mengenai%20produk%20dan%20layanan%20yang%20tersedia." 
            target="_blank">
             <i class="fab fa-whatsapp fa-2x"></i>
-            <span>Chat WhatsApp</span>
+            <span>Contact Me</span>
         </a>
     </div>
 

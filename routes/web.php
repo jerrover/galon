@@ -50,6 +50,7 @@ Route::middleware(['auth.admin'])->group(function () {
     Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.index');
     Route::post('/absensi', [AbsensiController::class, 'store'])->name('absensi.store');
     Route::get('/absensi/filter', [AbsensiController::class, 'filter'])->name('absensi.filter');
+    Route::delete('/absensi/{id}', [AbsensiController::class, 'destroy'])->name('absensi.destroy');
     
     // Reports routes
     Route::get('/reports/chart', [ReportController::class, 'transactionChart'])->name('reports.chart');
